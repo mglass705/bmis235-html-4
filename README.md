@@ -1,15 +1,22 @@
-# BMIS 235 · HTML-3 · Links + CSS: Your Own Site
+# HTML-4: Behind the Sound + the Fix-It Lab
+**By:** Matthew Glass (mglass2)
+**Live site:** [TO FILL IN: Cloudflare .pages.dev link, after Cloudflare is connected]
 
-**Name:** Matthew Glass
-**GU username:** mglass2
+## My path
+Path 2 · Full build.
 
-My live page: https://mglass705.github.io/bmis235-html-3/
+[TO FILL IN: Matthew, why you picked Path 2, in your own words.]
 
-Instructions: https://gu-27.github.io/html-module/html-3.html
+## By hand vs by AI
+**I made:** [TO FILL IN]
 
-## What's in this folder
+**AI made:** [TO FILL IN]
 
-- `index.html` — your home page (keep this name)
-- `page1.html`, `page2.html`, `page3.html` — rename these to your own page names
-- `styles.css` — your brand: one file that styles every page linked to it
-- `img/` — your menu images (replace these with the ones you make in Excel)
+**I checked it by:** [TO FILL IN]
+
+## My learning tool
+**Concept it teaches:** [TO FILL IN]
+
+**Built for how I learn because:** [TO FILL IN]
+
+**Tested by:** [TO FILL IN: classmate's first name] **What I changed:** [TO FILL IN]
