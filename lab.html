@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<!--
+  Author: Matthew Glass
+  GU username: mglass2
+  Course: BMIS 235 - HTML-4 (Final, Path 2: Full build)
+  Page: Fix-It Lab, my learning tool. You fix three real bugs I ran into
+  in HTML-1 to HTML-3: image paths, jump links, and the stylesheet link.
+  Idea, topics, and testing: Matthew. Code written by Claude Code (AI)
+  at Matthew's direction. See README.md for who made what.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Matthew Glass">
+  <meta name="description" content="Fix the Broken Website: an interactive lab for fixing image paths, jump links, and stylesheet links.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fix-It Lab | Behind the Sound</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="lab.js" defer></script>
+</head>
+<body class="lab-page">
+  <header class="site-header">
+    <div class="site-id"><span class="light-dot"></span> AFTER HOURS / AN UNDERGROUND PRODUCER ARCHIVE</div>
+    <nav aria-label="Producer navigation">
+      <a href="index.html"><img src="img/home.png" alt="Home" width="165" height="54"></a>
+      <a href="ginseng.html"><img src="img/ginseng.png" alt="Ginseng" width="165" height="54"></a>
+      <a href="misogi.html"><img src="img/misogi.png" alt="MISOGI" width="165" height="54"></a>
+      <a href="skai.html"><img src="img/skai.png" alt="Skai" width="165" height="54"></a>
+      <a href="cxo.html"><img src="img/cxo.png" alt="CXO" width="165" height="54"></a>
+      <a href="art-dealer.html"><img src="img/art-dealer.png" alt="Art Dealer" width="165" height="54"></a>
+      <a href="lab.html"><img src="img/lab.png" alt="Fix-It Lab" width="165" height="54"></a>
+    </nav>
+  </header>
+
+  <main>
+    <p class="eyebrow">FIX-IT LAB / A LEARNING TOOL FOR HTML-1 TO HTML-3</p>
+    <h1>Fix the<br>broken website.</h1>
+    <p class="lead">Three bugs I actually ran into while building sites for BMIS 235. Each one breaks something you can see. Spot the problem, fix one small piece of code, and find out <em>why</em> the fix works.</p>
+
+    <noscript><p class="lab-feedback is-bad">This lab needs JavaScript to check your answers. Turn it on and reload the page.</p></noscript>
+
+    <div class="lab-intro">
+      <ol class="lab-howto">
+        <li><strong>Spot it.</strong> Look at the broken page and the code. Pick what's wrong.</li>
+        <li><strong>Fix it.</strong> Edit the highlighted code and press <kbd>Enter</kbd> or <em>Check my fix</em>. Wrong answers tell you what went wrong.</li>
+        <li><strong>See why.</strong> A before and after, plus the rule behind the fix.</li>
+        <li><strong>Practice.</strong> One more broken example, with less help.</li>
+      </ol>
+
+      <section class="lab-progress" aria-labelledby="progress-title">
+        <h2 id="progress-title" class="lab-progress-title"><span id="lab-count">0</span> of 3 repaired</h2>
+        <ul>
+          <li><a href="#repair-paths">01 · Image paths</a> <span class="lab-status" data-status-for="paths">Not fixed yet</span></li>
+          <li><a href="#repair-jump">02 · Jump links</a> <span class="lab-status" data-status-for="jump">Not fixed yet</span></li>
+          <li><a href="#repair-css">03 · The stylesheet</a> <span class="lab-status" data-status-for="css">Not fixed yet</span></li>
+        </ul>
+        <button type="button" class="lab-btn ghost small" id="reset-all">Reset the whole lab</button>
+      </section>
+    </div>
+
+    <!-- ============================================================
+         REPAIR 01: IMAGE PATHS AND CAPITAL LETTERS
+         ============================================================ -->
+    <section class="lab-lesson" id="repair-paths" data-lesson="paths" aria-labelledby="paths-title">
+      <p class="lesson-num">REPAIR 01 / IMAGE PATHS</p>
+      <h2 id="paths-title">The missing Ginseng button</h2>
+      <p class="lesson-idea"><strong>The idea:</strong> an image's <code>src</code> is a set of directions from the page to the picture file. The browser follows them exactly. Every folder name, slash, letter, and capital letter has to match the real file.</p>
+
+      <div class="lab-step">
+        <h3><span class="step-tag">Step 1</span> Spot it</h3>
+        <p class="lab-expect"><strong>I expected</strong> the Ginseng button in the menu, <strong>but I see</strong> a broken picture with the word "Ginseng."</p>
+        <div class="lab-grid">
+          <div>
+            <p class="panel-label">The broken page</p>
+            <div class="mock-browser">
+              <div class="mock-bar" aria-hidden="true"><span class="mock-dots"></span><span class="mock-url">bmis235-html-4.pages.dev/index.html</span></div>
+              <div class="mock-body" id="paths-broken-preview"></div>
+            </div>
+            <p class="panel-label">The code for that button (in index.html)</p>
+            <pre class="lab-code"><code>&lt;a href="ginseng.html"&gt;
+  &lt;img src="img/Ginseng.png" alt="Ginseng"&gt;
+&lt;/a&gt;</code></pre>
+          </div>
+          <div>
+            <p class="panel-label">The project's files</p>
+            <div class="file-tree" data-tree="paths" data-here="index.html"></div>
+          </div>
+        </div>
+        <fieldset class="lab-spot" data-spot="paths">
+          <legend>What's the most likely cause?</legend>
+          <button type="button" class="lab-choice" data-choice="a">The alt text is spelled wrong.</button>
+          <button type="button" class="lab-choice" data-choice="b">The <code>src</code> doesn't match the real file's name.</button>
+          <button type="button" class="lab-choice" data-choice="c">Images have to be in the same folder as the page.</button>
+        </fieldset>
+        <div class="lab-feedback" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="lab-step" data-step="fix" hidden>
+        <h3><span class="step-tag">Step 2</span> Fix it</h3>
+        <p>Edit the <code>src</code> so the browser can find the file. Then press <kbd>Enter</kbd> or <em>Check my fix</em>.</p>
+        <div class="lab-grid">
+          <form class="lab-task" id="paths-fix" novalidate>
+            <pre class="lab-code"><code>&lt;a href="ginseng.html"&gt;
+  &lt;img src="<input class="lab-input" id="paths-src" type="text" value="img/Ginseng.png" data-broken="img/Ginseng.png" aria-label="src value for the Ginseng image" autocomplete="off" autocapitalize="off" spellcheck="false">" alt="Ginseng"&gt;
+&lt;/a&gt;</code></pre>
+            <div class="lab-actions">
+              <button type="submit" class="lab-btn">Check my fix</button>
+              <button type="button" class="lab-btn ghost" data-action="hint">Get a hint</button>
+              <button type="button" class="lab-btn ghost" data-action="answer" hidden>Show me the answer</button>
+              <button type="button" class="lab-btn ghost" data-action="reset">Reset</button>
+            </div>
+            <div class="lab-hints"></div>
+            <div class="lab-feedback" role="status" aria-live="polite"></div>
+          </form>
+          <div>
+            <p class="panel-label">Your version</p>
+            <div class="mock-browser">
+              <div class="mock-bar" aria-hidden="true"><span class="mock-dots"></span><span class="mock-url">bmis235-html-4.pages.dev/index.html</span></div>
+              <div class="mock-body" id="paths-your-preview"></div>
+            </div>
+            <p class="panel-label">How the browser follows your path</p>
+            <div class="file-tree" data-tree="paths" data-here="index.html" id="paths-walk-tree"></div>
+            <ol class="path-walk" id="paths-walk" aria-live="polite"></ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="lab-step" data-step="why" hidden>
+        <h3><span class="step-tag">Step 3</span> Why it works</h3>
+        <div class="lab-before-after">
+          <div class="ba-card ba-before">
+            <p class="ba-label">BEFORE</p>
+            <code>src="img/Ginseng.png"</code>
+            <div class="ba-visual"><span class="broken-img"><span class="broken-icon" aria-hidden="true"></span>Ginseng</span></div>
+            <p>The server looks inside <code>img</code> for a file named <strong>Ginseng.png</strong>. There isn't one, so it answers "404, not found." The browser shows the alt text instead.</p>
+          </div>
+          <div class="ba-card ba-after">
+            <p class="ba-label">AFTER</p>
+            <code>src="<span id="paths-after-src">img/ginseng.png</span>"</code>
+            <div class="ba-visual"><img src="img/ginseng.png" alt="Ginseng" width="165" height="54"></div>
+            <p>The directions match the real file, letter for letter. The server finds <strong>img/ginseng.png</strong> and sends the picture.</p>
+          </div>
+        </div>
+        <div class="lab-explain">
+          <p><strong>How to read a path:</strong> <code>img/ginseng.png</code> means "starting from the folder this page is in, open the <code>img</code> folder, then get the file named <code>ginseng.png</code>." The slash separates the folder from the file.</p>
+          <p><strong>Why capitals sneak up on you:</strong> Windows and Mac usually treat <code>G</code> and <code>g</code> as the same in file names, so <code>Ginseng.png</code> might load fine when you open the page on your own laptop. Web servers like Cloudflare and GitHub Pages treat them as different letters, so the same page breaks once it's online. It's the same trap as <code>Huberman.jpg</code> vs <code>huberman.jpg</code> from HTML-2.</p>
+          <p><strong>Why you saw the word "Ginseng":</strong> when an image can't load, the browser shows its <code>alt</code> text in its place. Good alt text tells you <em>which</em> image broke.</p>
+          <p class="lab-rule"><strong>Rule of thumb:</strong> name files in all lowercase with dashes instead of spaces (<code>art-dealer.png</code>), and copy and paste file names instead of retyping them.</p>
+        </div>
+      </div>
+
+      <div class="lab-step" data-step="practice" hidden>
+        <h3><span class="step-tag">Step 4</span> Practice round</h3>
+        <p>A friend made a new photo for the CXO page. Their computer saved it as <code>CXO-Live.JPG</code>, and they uploaded it into the <code>img</code> folder. Write the <code>src</code> so <code>index.html</code> can show it. Less help this time.</p>
+        <div class="lab-grid">
+          <form class="lab-task" id="paths-practice" novalidate>
+            <pre class="lab-code"><code>&lt;img src="<input class="lab-input" id="paths-practice-src" type="text" value="" data-broken="" placeholder="type the path" aria-label="src value for the CXO live photo" autocomplete="off" autocapitalize="off" spellcheck="false">" alt="CXO performing live"&gt;</code></pre>
+            <div class="lab-actions">
+              <button type="submit" class="lab-btn">Check</button>
+              <button type="button" class="lab-btn ghost" data-action="hint">Get a hint</button>
+              <button type="button" class="lab-btn ghost" data-action="answer" hidden>Show me the answer</button>
+              <button type="button" class="lab-btn ghost" data-action="reset">Reset</button>
+            </div>
+            <div class="lab-hints"></div>
+            <div class="lab-feedback" role="status" aria-live="polite"></div>
+          </form>
+          <div>
+            <p class="panel-label">The project's files</p>
+            <div class="file-tree" data-tree="practice" data-here="index.html" id="paths-practice-tree"></div>
+            <p class="panel-label">Preview <span class="small">(simulated photo)</span></p>
+            <div class="mock-photo-slot" id="paths-practice-preview"></div>
+          </div>
+        </div>
+      </div>
+      <p class="lesson-reset"><button type="button" class="lab-btn ghost small" data-action="reset-lesson">Start Repair 01 over</button></p>
+    </section>
+
+    <!-- ============================================================
+         REPAIR 02: JUMP LINKS (href="#name" must match id="name")
+         ============================================================ -->
+    <section class="lab-lesson" id="repair-jump" data-lesson="jump" aria-labelledby="jump-title">
+      <p class="lesson-num">REPAIR 02 / JUMP LINKS</p>
+      <h2 id="jump-title">The link that goes nowhere</h2>
+      <p class="lesson-idea"><strong>The idea:</strong> a jump link has two halves. The link says <code>href="#tracks"</code>. The spot it jumps to says <code>id="tracks"</code>. The name after the <code>#</code> has to match the id <em>exactly</em>, or the browser can't find where to go.</p>
+
+      <div class="lab-step">
+        <h3><span class="step-tag">Step 1</span> Spot it</h3>
+        <p class="lab-expect"><strong>I expected</strong> clicking "Jump to the five tracks" to scroll down to the track list, <strong>but I see</strong> nothing happen at all.</p>
+        <div class="lab-grid">
+          <div>
+            <p class="panel-label">The broken page <span class="small">(try clicking the link)</span></p>
+            <div class="mock-browser">
+              <div class="mock-bar" aria-hidden="true"><span class="mock-dots"></span><span class="mock-url">bmis235-html-4.pages.dev/ginseng.html</span></div>
+              <div class="mock-body mock-scroll" id="jump-broken-preview"></div>
+            </div>
+            <div class="lab-feedback mock-note" id="jump-broken-note" role="status" aria-live="polite"></div>
+          </div>
+          <div>
+            <p class="panel-label">The code (in ginseng.html)</p>
+            <pre class="lab-code"><code>&lt;a href="#Tracks"&gt;Jump to the five tracks&lt;/a&gt;
+
+&lt;!-- ...the rest of the page... --&gt;
+
+&lt;section id="tracks"&gt;
+  &lt;h2&gt;Five tracks to know&lt;/h2&gt;
+  ...
+&lt;/section&gt;</code></pre>
+          </div>
+        </div>
+        <fieldset class="lab-spot" data-spot="jump">
+          <legend>Why doesn't the link jump?</legend>
+          <button type="button" class="lab-choice" data-choice="a">Jump links only work between two different pages.</button>
+          <button type="button" class="lab-choice" data-choice="b">The name after <code>#</code> doesn't exactly match the id.</button>
+          <button type="button" class="lab-choice" data-choice="c">The section it jumps to has to be a link (<code>&lt;a&gt;</code>) too.</button>
+        </fieldset>
+        <div class="lab-feedback" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="lab-step" data-step="fix" hidden>
+        <h3><span class="step-tag">Step 2</span> Fix it</h3>
+        <p>You can edit either half, or both. They just need to match. Then press <kbd>Enter</kbd> or <em>Check my fix</em>, and click the link in your version to test it.</p>
+        <div class="lab-grid">
+          <form class="lab-task" id="jump-fix" novalidate>
+            <pre class="lab-code"><code>&lt;a href="<input class="lab-input" id="jump-href" type="text" value="#Tracks" data-broken="#Tracks" aria-label="href value of the jump link" autocomplete="off" autocapitalize="off" spellcheck="false">"&gt;Jump to the five tracks&lt;/a&gt;
+
+&lt;!-- ...the rest of the page... --&gt;
+
+&lt;section id="<input class="lab-input" id="jump-id" type="text" value="tracks" data-broken="tracks" aria-label="id value of the tracks section" autocomplete="off" autocapitalize="off" spellcheck="false">"&gt;
+  &lt;h2&gt;Five tracks to know&lt;/h2&gt;
+  ...
+&lt;/section&gt;</code></pre>
+            <div class="lab-actions">
+              <button type="submit" class="lab-btn">Check my fix</button>
+              <button type="button" class="lab-btn ghost" data-action="hint">Get a hint</button>
+              <button type="button" class="lab-btn ghost" data-action="answer" hidden>Show me the answer</button>
+              <button type="button" class="lab-btn ghost" data-action="reset">Reset</button>
+            </div>
+            <div class="lab-hints"></div>
+            <div class="lab-feedback" role="status" aria-live="polite"></div>
+          </form>
+          <div>
+            <p class="panel-label">Your version <span class="small">(click the link to test it)</span></p>
+            <div class="mock-browser">
+              <div class="mock-bar" aria-hidden="true"><span class="mock-dots"></span><span class="mock-url">bmis235-html-4.pages.dev/ginseng.html</span></div>
+              <div class="mock-body mock-scroll" id="jump-your-preview"></div>
+            </div>
+            <div class="lab-feedback mock-note" id="jump-your-note" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lab-step" data-step="why" hidden>
+        <h3><span class="step-tag">Step 3</span> Why it works</h3>
+        <div class="lab-before-after">
+          <div class="ba-card ba-before">
+            <p class="ba-label">BEFORE</p>
+            <code>href="#Tracks"</code> and <code>id="tracks"</code>
+            <p>The browser looks for an element whose id is exactly <strong>Tracks</strong>, capital T. The only id on the page is <strong>tracks</strong>, so it finds nothing and stays put. No error message, nothing. That's what makes this bug sneaky.</p>
+          </div>
+          <div class="ba-card ba-after">
+            <p class="ba-label">AFTER</p>
+            <code id="jump-after-code">href="#tracks"</code>
+            <p>Both halves use the same name, so the browser finds the section and scrolls to it.</p>
+          </div>
+        </div>
+        <div class="lab-explain" id="jump-explain">
+          <p><strong>The two halves:</strong> the <code>#</code> goes only in the link. It means "a spot on this page." The id is just the name, with no <code>#</code>.</p>
+          <p><strong>The rules for ids:</strong> exact match, capitals included. No spaces (use dashes, like <code>five-tracks</code>). Each id should be used only once per page.</p>
+          <p><strong>Jumping to another page:</strong> put the page name first, like <code>ginseng.html#tracks</code>. That opens ginseng.html and jumps to the tracks section.</p>
+          <p class="lab-rule"><strong>You've been using these already:</strong> the "01 · Image paths" links at the top of this lab are jump links to <code>id="repair-paths"</code> and friends.</p>
+        </div>
+      </div>
+
+      <div class="lab-step" data-step="practice" hidden>
+        <h3><span class="step-tag">Step 4</span> Practice round</h3>
+        <p>The Ginseng page has this heading further down: <code>&lt;h2 id="favorite-moments"&gt;Favorite production moments&lt;/h2&gt;</code>. Write the <code>href</code> for a link at the top of the same page that jumps to it.</p>
+        <form class="lab-task" id="jump-practice" novalidate>
+          <pre class="lab-code"><code>&lt;a href="<input class="lab-input" id="jump-practice-href" type="text" value="" data-broken="" placeholder="type the href" aria-label="href value for the favorite moments link" autocomplete="off" autocapitalize="off" spellcheck="false">"&gt;Skip to my favorite moments&lt;/a&gt;</code></pre>
+          <div class="lab-actions">
+            <button type="submit" class="lab-btn">Check</button>
+            <button type="button" class="lab-btn ghost" data-action="hint">Get a hint</button>
+            <button type="button" class="lab-btn ghost" data-action="answer" hidden>Show me the answer</button>
+            <button type="button" class="lab-btn ghost" data-action="reset">Reset</button>
+          </div>
+          <div class="lab-hints"></div>
+          <div class="lab-feedback" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+      <p class="lesson-reset"><button type="button" class="lab-btn ghost small" data-action="reset-lesson">Start Repair 02 over</button></p>
+    </section>
+
+    <!-- ============================================================
+         REPAIR 03: CONNECTING THE STYLESHEET
+         ============================================================ -->
+    <section class="lab-lesson" id="repair-css" data-lesson="css" aria-labelledby="css-title">
+      <p class="lesson-num">REPAIR 03 / THE STYLESHEET</p>
+      <h2 id="css-title">The page that lost its look</h2>
+      <p class="lesson-idea"><strong>The idea:</strong> one line in each page's <code>&lt;head&gt;</code>, <code>&lt;link rel="stylesheet" href="styles.css"&gt;</code>, connects that page to the shared stylesheet. Every page with that line gets the same look. A page without a working link gets none of it.</p>
+
+      <div class="lab-step">
+        <h3><span class="step-tag">Step 1</span> Spot it</h3>
+        <p class="lab-expect"><strong>I expected</strong> all four pages to have the dark background and pink headings, <strong>but I see</strong> skai.html looking like a plain white page from 1996.</p>
+        <p class="panel-label">Four pages that all share styles.css</p>
+        <div class="mini-site" id="css-broken-site"></div>
+        <div class="lab-grid">
+          <div>
+            <p class="panel-label">ginseng.html's head (looks right)</p>
+            <pre class="lab-code"><code>&lt;head&gt;
+  &lt;title&gt;Ginseng | Behind the Sound&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;</code></pre>
+          </div>
+          <div>
+            <p class="panel-label">skai.html's head (looks plain)</p>
+            <pre class="lab-code"><code>&lt;head&gt;
+  &lt;title&gt;Skai | Behind the Sound&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre>
+          </div>
+        </div>
+        <fieldset class="lab-spot" data-spot="css">
+          <legend>Why is skai.html the only plain page?</legend>
+          <button type="button" class="lab-choice" data-choice="a">skai.html has different content than the other pages.</button>
+          <button type="button" class="lab-choice" data-choice="b">skai.html's <code>&lt;link&gt;</code> points to a file that doesn't exist.</button>
+          <button type="button" class="lab-choice" data-choice="c">One stylesheet can only style three pages.</button>
+        </fieldset>
+        <div class="lab-feedback" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="lab-step" data-step="fix" hidden>
+        <h3><span class="step-tag">Step 2</span> Fix it</h3>
+        <p>Fix skai.html's <code>href</code> so it points at the real stylesheet. Then press <kbd>Enter</kbd> or <em>Check my fix</em>.</p>
+        <div class="lab-grid">
+          <form class="lab-task" id="css-fix" novalidate>
+            <pre class="lab-code"><code>&lt;head&gt;
+  &lt;title&gt;Skai | Behind the Sound&lt;/title&gt;
+  &lt;link rel="stylesheet" href="<input class="lab-input" id="css-href" type="text" value="style.css" data-broken="style.css" aria-label="href value of the stylesheet link in skai.html" autocomplete="off" autocapitalize="off" spellcheck="false">"&gt;
+&lt;/head&gt;</code></pre>
+            <div class="lab-actions">
+              <button type="submit" class="lab-btn">Check my fix</button>
+              <button type="button" class="lab-btn ghost" data-action="hint">Get a hint</button>
+              <button type="button" class="lab-btn ghost" data-action="answer" hidden>Show me the answer</button>
+              <button type="button" class="lab-btn ghost" data-action="reset">Reset</button>
+            </div>
+            <div class="lab-hints"></div>
+            <div class="lab-feedback" role="status" aria-live="polite"></div>
+          </form>
+          <div>
+            <p class="panel-label">The project's files</p>
+            <div class="file-tree" data-tree="css" data-here="skai.html" id="css-walk-tree"></div>
+            <ol class="path-walk" id="css-walk" aria-live="polite"></ol>
+          </div>
+        </div>
+        <p class="panel-label">Your version</p>
+        <div class="mini-site" id="css-your-site"></div>
+      </div>
+
+      <div class="lab-step" data-step="why" hidden>
+        <h3><span class="step-tag">Step 3</span> Why it works</h3>
+        <div class="lab-explain">
+          <p><strong>What the line does:</strong> <code>rel="stylesheet"</code> tells the browser what the file is for. <code>href</code> is the path to it, so it follows the same rules as Repair 01: exact spelling, exact capitals, right folder.</p>
+          <p><strong>What went wrong:</strong> the browser looked for <code>style.css</code>, found nothing, and quietly skipped the styles. The page fell back to the browser's built-in look: white background, black Times-style text, blue underlined links. There's no error on the page itself. If you open the browser's developer tools (right-click, <em>Inspect</em>, then the <em>Console</em> tab), you'd see a 404 error for style.css. That's the fastest way to catch this bug.</p>
+        </div>
+        <div class="lab-spread">
+          <p class="panel-label">See it spread: one file, four pages</p>
+          <p>This is the whole point of a shared stylesheet. Pick a new accent color. It's one change in one file, and watch what happens to the pages.</p>
+          <pre class="lab-code"><code>/* styles.css */
+:root { --pink: <span id="css-swatch-code">#F7ABCA</span>; }</code></pre>
+          <div class="lab-swatches" role="group" aria-label="Accent color in styles.css">
+            <button type="button" class="lab-swatch" data-color="#F7ABCA" aria-pressed="true"><span style="background:#F7ABCA"></span>Pink</button>
+            <button type="button" class="lab-swatch" data-color="#8FE3C2" aria-pressed="false"><span style="background:#8FE3C2"></span>Mint</button>
+            <button type="button" class="lab-swatch" data-color="#F3D27A" aria-pressed="false"><span style="background:#F3D27A"></span>Gold</button>
+            <button type="button" class="lab-swatch" data-color="#9CCBFF" aria-pressed="false"><span style="background:#9CCBFF"></span>Ice</button>
+          </div>
+          <div class="mini-site" id="css-spread-site"></div>
+          <p class="lab-rule"><strong>Before your fix,</strong> skai.html would have ignored this color change completely, because it never loaded styles.css. Your real site works the same way: one styles.css styles all seven pages, including this one.</p>
+        </div>
+      </div>
+
+      <div class="lab-step" data-step="practice" hidden>
+        <h3><span class="step-tag">Step 4</span> Practice round</h3>
+        <p>You just made a new page, <code>cxo.html</code>, in the same folder as <code>styles.css</code>. From memory, type the <strong>whole line</strong> that connects it to the stylesheet.</p>
+        <div class="lab-grid">
+          <form class="lab-task" id="css-practice" novalidate>
+            <pre class="lab-code"><code>&lt;head&gt;
+  &lt;title&gt;CXO | Behind the Sound&lt;/title&gt;
+  <input class="lab-input wide" id="css-practice-line" type="text" value="" data-broken="" placeholder="type the full line" aria-label="The full line that connects cxo.html to styles.css" autocomplete="off" autocapitalize="off" spellcheck="false">
+&lt;/head&gt;</code></pre>
+            <div class="lab-actions">
+              <button type="submit" class="lab-btn">Check</button>
+              <button type="button" class="lab-btn ghost" data-action="hint">Get a hint</button>
+              <button type="button" class="lab-btn ghost" data-action="answer" hidden>Show me the answer</button>
+              <button type="button" class="lab-btn ghost" data-action="reset">Reset</button>
+            </div>
+            <div class="lab-hints"></div>
+            <div class="lab-feedback" role="status" aria-live="polite"></div>
+          </form>
+          <div>
+            <p class="panel-label">cxo.html</p>
+            <div class="mini-site single" id="css-practice-site"></div>
+          </div>
+        </div>
+      </div>
+      <p class="lesson-reset"><button type="button" class="lab-btn ghost small" data-action="reset-lesson">Start Repair 03 over</button></p>
+    </section>
+
+    <section class="lab-cheat" id="cheat-sheet" aria-labelledby="cheat-title">
+      <h2 id="cheat-title">Cheat sheet: when something's broken</h2>
+      <ol>
+        <li><strong>Missing image?</strong> Compare the <code>src</code> with the real file name, letter by letter: folder, slash, name, capitals, extension.</li>
+        <li><strong>Jump link does nothing?</strong> The name after <code>#</code> in the <code>href</code> must exactly match an <code>id</code> on the page (no <code>#</code> in the id, no spaces).</li>
+        <li><strong>Page lost its styles?</strong> Check the <code>&lt;link rel="stylesheet" href="..."&gt;</code> line in the <code>&lt;head&gt;</code>. The href is a path, so it follows rule 1.</li>
+        <li><strong>Still stuck?</strong> Say it in one sentence: "I expected ___, but I see ___." Then find the one line that sentence points to.</li>
+      </ol>
+      <p class="small"><a href="#repair-paths">Back to Repair 01</a> · <a href="index.html">Back to the archive</a></p>
+    </section>
+  </main>
+
+  <footer>Built by Matthew Glass (mglass2) &middot; BMIS 235 HTML-4 &middot; Lab code written with Claude Code (AI), see README <span>FIX ONE LINE AT A TIME</span></footer>
+</body>
+</html>
