@@ -1,6 +1,6 @@
 # HTML-4: Behind the Sound + the Fix-It Lab
 **By:** Matthew Glass (mglass2)
-**Live site:** [TO FILL IN: Cloudflare .pages.dev link]
+**Live site:** https://bmis235-html-4.mglass2.workers.dev
 
 ## My path
 Path 2 · Full build: Claude Code connected to this GitHub repo, deployed through Cloudflare.
@@ -16,7 +16,7 @@ Path 2 · Full build: Claude Code connected to this GitHub repo, deployed throug
   - I chose the "Fix the Broken Website" idea and its three topics, all from bugs I ran into in earlier assignments.
   - I asked for the lab to keep my site's pink noise look.
   - I approved the plan before the build.
-- **HTML-4 setup I did myself:** created this repo by importing HTML-3 and gave Claude Code access to it. [TO FILL IN: add "connected the repo to Cloudflare" once that's done.]
+- **HTML-4 setup I did myself:** created this repo by importing HTML-3, installed the Claude GitHub app on it so Claude Code could commit, and connected the repo to Cloudflare Workers so every push to `main` redeploys the live site.
 - **Classmate test:** [TO FILL IN after the test: I ran the test with a Path 1 classmate and decided what to change from their feedback (see "My learning tool" below).]
 
 **AI made:** Claude Code (Anthropic's Claude, used on the web at claude.ai with access to this repo) did the following. You can see every change in the commit history.
